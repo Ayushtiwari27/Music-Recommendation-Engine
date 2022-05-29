@@ -23,7 +23,7 @@ A **Recommendation engine** is a filtering system which aims to predict  prefere
 There are two main types of recommender systems:
 
 - **Content-based filters**: gives recommendations based on the similarity of two songs.[Medium post](https://medium.com/@meinzaugarat/the-abc-of-building-a-music-recommender-system-part-i-230e99da9cad)
-- **Collaborative filters**: make a prediction on posible preferences using a matrix with ratings on different songs by different users.[Medium post](https://medium.com/@meinzaugarat/the-abc-of-building-a-music-recommender-system-part-ii-65ec3900d19f)
+- **Collaborative filters**: make a prediction on posible preferences using a matrix with ratings on songs by different users.[Medium post](https://medium.com/@meinzaugarat/the-abc-of-building-a-music-recommender-system-part-ii-65ec3900d19f)
 
 ## Problem Statement
 
@@ -57,7 +57,20 @@ The problem statement given was:
 pip3 install -r requirements.txt
 ```
 ## Navigating Through the Website
-1. **Login**: The first page that
+1. **Login**: The first page that user interacts with is the Login page. The user needs to Login first to start using the application. If the User  is not registered then he/she can go to the Registeration page to register first. If the user enters wrong credentials than also the user will be transfered to Registration page.
+<img alt="Login Page" src="">
+
+2. **Registration**: The Registration page takes Name, Email Id, Username and Password as input and redirects to the Login page to continue.
+<img alt="Registration Page" src="">
+
+3. **Welcome**: After the user is logged in he will be redirected to the Welcome page where 100 random songs will be displayed and user can choose from any song to continue with. Then the recommendations will be based on the songs that the user chooses.
+<img alt="Welcome Page" src="">
+
+4. **Index**: After the user chooses a song on the Welcome page he will be directed to the Index page where the user gets recommendations on the basis of the songs he/she clicks on. The user can play a song available in meantime he surfs the website.
+<img alt="Index Page" src="">
+
+5.**Logout**: the user is also provided an option to Logout when and where the user wishes to. After logging out the user will be directed to the login page.
+<img alt="Logout Page" src="">
 
 
 
