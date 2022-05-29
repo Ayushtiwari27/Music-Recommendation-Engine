@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Sargam</title>
+    <link rel="shortcut icon" href="/static/images/title.ico">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind CSS and JS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Mystyle CSS -->
+    <link rel="stylesheet" href="/static/css/mystyle.css" />
+
+</head>
+
+<body background="/static/images/backgroundindex.jpg">
+
+    <!-- A division for header which contains Logo and name of the website, user's name and a logout button -->
+    <div class="container">
+        <nav class="shadow-lg border-t-4 border-purple-900">
+            <div class="max-w-7xl bg-purple-700 mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="flex space-x-0">
+                        <div>
+                            <a class="flex items-left py-6 px-3">
+                                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNK3yZL17CCjCe0Yy5qer6tU0kzOnvhQL-rzjResFVVhV51TS-" alt="Logo" class="rounded-full h-8 w-8 mr-2" />
+                                <span class="font-bold text-white px-5 text-2xl">SARGAM</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex items-center ">
+                        <!-- User's Name -->
+                        <h3 class="text-xl font-semibold text-white mr-2">Hello, {{request.user.first_name}}</h3>
+                        <!-- Logout button -->
+                        <button type="submit">
+                        <span class="font-bold text-white px-5 text-lg"><a href="/logout" alt="Logout"><svg class="h-8 w-8 text-red-500"
+                              width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" />
+                              <path d="M7 6a7.75 7.75 0 1 0 10 0" />
+                              <line x1="12" y1="4" x2="12" y2="12" />
+                            </svg></a></span>
+                      </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- A division for the music player in which name of song, year of release and name of the artist
+         is available and a player is there which can play audio -->
+    <div class="w-full h-full  flex flex-row flex-wrap p-8">
+        <div class="mx-auto w-2/4">
+            <div class="rounded-lg shadow-lg bg-blue-100 w-full flex flex-row flex-wrap p-3 antialiased" style="
+                        background-image: url('http://127.0.0.1:8000/static/images/musicplayer.jpg');
+                        background-repeat: no-repat;
+                        background-size: cover;
+                        background-blend-mode: multiply;
+                        ">
+                <div class="md:w-1/3 w-full">
+                    <div x-data="playaudio()" class="h-40 w-40">
+                        <button @keydown.tab="playAndStop" @click="playAndStop" type="button" class="relative rounded-xl group cursor-pointer focus:outline-none focus:ring focus:ring-[#1F89AE]">
+                      <div class="absolute inset-0 flex items-center justify-center p-8">
+                        <div class="w-full h-full transition duration-300 ease-in-out bg-cyan-500 filter group-hover:blur-2xl">
+                        </div>
+                      </div>
+                      <img alt="card audio player" class="relative rounded-xl"
+                        src="http://127.0.0.1:8000/static/images/playingaudio.gif" />
+                      <div
+                        class="absolute w-full h-full inset-0 flex items-center justify-center transition duration-200 ease-in-out bg-image rounded-xl bg-opacity-30 group-hover:bg-opacity-20">
+                        <!-- Music player with play and pause feature -->
+                        <div x-show="!currentlyPlaying" class="bg-black bg-opacity-50 rounded-full p-0.5">
+                          <svg class="w-12 h-12 text-white text-opacity-0 transition duration-150 ease-in-out hover:text-opacity-20"
+                            viewBox="0 0 284 284" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M184.197 129.243L135.177 96.5521C132.865 95.01 130.178 94.1249 127.403 93.9915C124.628 93.8581 121.868 94.4813 119.419 95.7946C116.971 97.1079 114.925 99.0619 113.501 101.448C112.077 103.834 111.327 106.562 111.333 109.34V174.706C111.333 177.482 112.086 180.206 113.513 182.588C114.939 184.969 116.985 186.919 119.433 188.228C121.881 189.538 124.638 190.158 127.411 190.024C130.183 189.889 132.867 189.004 135.177 187.463L184.197 154.773C186.297 153.373 188.019 151.475 189.21 149.25C190.401 147.025 191.024 144.54 191.024 142.015C191.024 139.491 190.401 137.006 189.21 134.781C188.019 132.555 186.297 130.658 184.197 129.258V129.243Z"
+                              fill="white"></path>
+                            <path fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </div>
+                        <div x-show="currentlyPlaying" class="bg-black bg-opacity-50 rounded-full p-0.5">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-12 h-12 text-white text-opacity-0 transition duration-150 ease-in-out hover:text-opacity-20"
+                            viewBox="0 0 20 20" fill="white">
+                            <path fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </div>
+                      </div>
+                    </button>
+                        <audio x-ref="audio" src="http://127.0.0.1:8000/static/Music.mp3"></audio>
+                    </div>
+                </div>
+                <div class="md:w-2/3 w-full px-3  flex flex-row flex-wrap">
+                    <div class="container">
+                        <div class="w-full text-center text-gray-900 font-semibold relative pt-3 md:pt-0">
+                            <!-- Displaying name of the current song -->
+                            <div class="text-4xl text-white leading-tight">
+                                <div class="marquee"><span>{{hello.0.0}}</span></div>
+                            </div>
+                            <!-- Displaying Year of release of the current song -->
+                            <h2 class="mt-1 text-white dark:text-white group-hover:text-white">
+                                ({{hello.0.1}})
+                            </h2>
+                            <!-- Displaying name of artists of the current song -->
+                            <h4 class="mt-1 text-white font-semibold">
+                                {{hello.0.2}}
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Javascript for the Music player's play and pause button -->
+        <script>
+            function playaudio() {
+                console.log("clicked");
+                return {
+                    currentlyPlaying: false,
+                    //play and stop the audio
+                    playAndStop() {
+                        if (this.currentlyPlaying) {
+                            this.$refs.audio.pause();
+                            this.$refs.audio.currentTime = 0;
+                            this.currentlyPlaying = false;
+                        } else {
+                            this.$refs.audio.play();
+                            this.currentlyPlaying = true;
+                        }
+                    },
+                };
+            }
+        </script>
+    </div>
+    <!-- Music Player division ends -->
+
+    <!-- A division for all the recommended songs -->
+    <div class="container">
+        <section class="bg-[#e1c9ee] dark:bg-gray-900 mt-2 rounded">
+            <div class="container px-0 py-0 mx-auto">
+                <div class="text-3xl text-black leading-tight" style="text-align: center;text-shadow: 1px 1px #3a393a;font-family: Times New Roman, Times, serif;">RECOMMENDATIONS</div>
+                <div class="grid grid-cols-1 px-4 gap-8 mt-1 xl:mt-16 md:grid-cols-2 xl:grid-cols-5">
+
+                    <!-- for loop to display all the Recommendations -->
+                    {% for product in hello.1 %}
+                    <a href='/recommend_songs/{{product.name}}'>
+                        <div class="flex items-stretch flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-purple-600 rounded-xl">
+                            <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="http://127.0.0.1:8000/static/images/thumb.png" alt="" />
+                            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+                                <div class="marquee"><span>{{product.name}}</span></div>
+                            </h1>
+                            <p class='ellipsis mt-4 text-gray-700 font-semibold capitalize dark:text-white group-hover:text-white' data-text='{{product.artists}}'>{{product.artists}}</p>
+                            <h4 class="mt-2 font-semibold text-gray-700 dark:text-white group-hover:text-white">
+                                {{product.year}}
+                            </h4>
+                        </div>
+                    </a>
+                    {% endfor %}
+                    <!-- for loop ends -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--  Footer  -->
+    <div class="container">
+        <div class="bg-gray-900">
+            <footer class="flex flex-wrap items-center justify-between p-3 m-0">
+                <div class="container mx-auto flex flex-col flex-wrap items-center justify-between">
+                    <ul class="flex mx-auto text-white text-center">
+                        <li class="p-2 cursor-pointer hover:underline"><a href="/static/Terms-and-Conditions.pdf">Terms & Conditions</a></li>
+                        <li class="p-2 cursor-pointer hover:underline">Privacy</li>
+                        <li class="p-2 cursor-pointer hover:underline">Cookies</li>
+                    </ul>
+                    <div class="flex mx-auto text-white text-center">
+                        Copyright Business Name © 2022
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+</html>

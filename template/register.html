@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Registration</title>
+    <link rel="shortcut icon" href="/static/images/title.ico">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+
+</head>
+
+<body style="background-image: url('/static/images/registerbg.jpg'); background-size:cover">>
+
+    <!-- Scripts used -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Message to be displayed to register first if no profile is found in the database -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="{{ message.tags }} alert alert-warning" role="alert">
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- Container for Registeration which takes Name,Email Id, Username and Password as input  -->
+    <div class="container">
+        <section class="vh-100 bg-image">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="card" style="border-radius: 15px">
+                                <div class="card-body p-5">
+                                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                    <form class="form-register" method="post" action="/register">{% csrf_token %}
+
+                                        <!-- Name -->
+                                        <div class="form-outline mb-4">
+                                            <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" required />
+                                            <label class="form-label" for="form3Example1cg">Your Name</label>
+                                        </div>
+
+                                        <!-- Email ID -->
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="form3Example3cg" name="email" class="form-control form-control-lg" required autofocus>
+                                            <label class="form-label" for="form3Example3cg">Your Email</label>
+                                        </div>
+
+                                        <!-- Username -->
+                                        <div class="form-outline mb-4">
+                                            <input type="text" name="username" id="form3Example3cg" class="form-control form-control-lg" required />
+                                            <label class="form-label" for="form3Example3cg">Your Username</label>
+                                        </div>
+
+                                        <!-- Password -->
+                                        <div class="form-outline mb-4">
+                                            <input type="password" name="password" id="form3Example4cg" class="form-control form-control-lg" required />
+                                            <label class="form-label" for="form3Example4cg">Password</label>
+                                        </div>
+
+                                        <!-- Repeat Password -->
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="form3Example4cdg" class="form-control form-control-lg" required />
+                                            <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                        </div>
+
+                                        <!-- Required checkbox for Terms and conditions -->
+                                        <div class="form-check d-flex justify-content-center mb-4">
+                                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" required />
+                                            <label class="form-check-label" for="form2Example3g"><br>I agree to all statements in
+                                                <a href="/static/Terms-and-Conditions.pdf" class="text-body"><u>Terms of service</u></a>
+                                            </label>
+                                        </div>
+
+                                        <!-- Register button which redirects to login.html  -->
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                        </div>
+                                        {% csrf_token %}
+
+                                        <!-- if user is alredy registered then clicking on the Loginn here link he will be directed to login.html to login -->
+                                        <p class="text-center text-muted mt-4 mb-0">
+                                            Have already an account?
+                                            <a href="/login" class="fw-bold text-body"><u>Login here</u></a>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

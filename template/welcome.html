@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Sargam</title>
+    <link rel="shortcut icon" href="/static/images/title.ico">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind CSS and JS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Mystyle CSS -->
+    <link rel="stylesheet" href="/static/css/mystyle.css" />
+
+</head>
+
+<body background="/static/images/backgroundindex.jpg">
+
+    <!-- A division for header which contains Logo and name of the website, user's name and a logout button -->
+    <div class="container">
+        <nav class="shadow-lg border-t-4 border-purple-900">
+            <div class="max-w-7xl bg-purple-700 mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="flex space-x-0">
+                        <div>
+                            <a class="flex items-left py-6 px-3">
+                                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNK3yZL17CCjCe0Yy5qer6tU0kzOnvhQL-rzjResFVVhV51TS-" alt="Logo" class="rounded-full h-8 w-8 mr-2" />
+                                <span class="font-bold text-white px-5 text-2xl">SARGAM</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex items-center ">
+                        <!-- User's Name -->
+                        <h3 class=" text-xl font-semibold text-white mr-2 ">Welcome!! {{request.user.first_name}} </h3>
+                        <!-- Logout button -->
+                        <button type="submit">
+                            <span class="font-bold text-white px-5 text-lg"><a href="/logout" alt="Logout"><svg class="h-8 w-8 text-red-500"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <path d="M7 6a7.75 7.75 0 1 0 10 0" />
+                                        <line x1="12" y1="4" x2="12" y2="12" />
+                                    </svg></a></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- A division for all the recommended songs -->
+    <div class="container">
+        <section class="bg-[#e1c9ee] dark:bg-gray-900  px-2 mx-3 mt-3 rounded">
+            <div class="container px-0 py-2 mx-auto">
+                <div class="text-3xl text-black leading-tight" style="
+              text-align: center;
+              text-shadow: 1px 1px #3a393a;
+              font-family: Times New Roman, Times, serif;
+            ">
+                    SELECT A SONG TO BEGIN....</div>
+                <div class="grid grid-cols-1 gap-8 mt-1 xl:mt-16 md:grid-cols-2 xl:grid-cols-5">
+
+                    <!-- for loop to display all the Recommendations -->
+                    {% for product in nice %}
+                    <a href='/recommend_songs/{{product.name}}'>
+                        <div class="flex items-stretch flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-purple-600 rounded-xl">
+                            <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="http://127.0.0.1:8000/static/images/thumb.png" alt="" />
+                            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+                                <div class="marquee"><span>{{product.name}}</span></div>
+                            </h1>
+                            <h3 class="ellipsis mt-4 text-gray-500 font-semibold capitalize dark:text-white group-hover:text-white-" data-text='{{product.artists}}'>
+                                {{product.artists}}
+                            </h3>
+                            <h4 class="mt-1 text-gray-700 dark:text-white group-hover:text-white">
+                                {{product.year}}
+                            </h4>
+                            <div class="flex mt-3 -mx-2"></div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                    <!-- for loop ends -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--  Footer  -->
+    <div class="bg-gray-900">
+        <footer class="flex flex-wrap items-center justify-between p-3 m-auto">
+            <div class="container mx-auto flex flex-col flex-wrap items-center justify-between">
+                <ul class="flex mx-auto text-white text-center">
+                    <li class="p-2 cursor-pointer hover:underline"><a href="/static/Terms-and-Conditions.pdf">Terms & Conditions</a></li>
+                    <li class="p-2 cursor-pointer hover:underline">Privacy</li>
+                    <li class="p-2 cursor-pointer hover:underline">Cookies</li>
+                </ul>
+                <div class="flex mx-auto text-white text-center">
+                    Copyright Business Name © 2022
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

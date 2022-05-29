@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Login</title>
+    <link rel="shortcut icon" href="/static/images/title.ico">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS and JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+
+    <!-- Mystyle CSS -->
+    <link rel="stylesheet" href="/static/css/mystyle.css" />
+
+</head>
+
+<body style="background-color: #f5f5f5;">
+
+    <!-- Message to be displayed after successful registration to login and continue -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div class="{{ message.tags }} alert alert-success fade show" role="alert">
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <!-- Message ends -->
+
+    <!-- A division which contains the form for login of the user  -->
+    <div class="text-center" style="display: flex; align-items: center; padding-top: 80px; padding-bottom: 40px;">
+        <main class="form-signin w-100 my-auto">
+            <form class="form-signin " method="post" action="/login" style="border-radius: 10px;">{% csrf_token %}
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;text-shadow: 0px 1px #939090;font-family: Times New Roman, Times, serif; ">
+                    WELCOME</h1>
+
+                <!-- Username  -->
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+
+                <!-- Password -->
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+
+                <!-- Remember me checkbox-->
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+
+                <!-- Submit button -->
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+                <!-- if user is new then clicking on the Register now link he will be directed to register.html for registration -->
+                <p class="text-center text-muted mt-4 mb-0">
+                    New Here?
+                    <a href="/register" class="fw-bold text-body"><u>Register Now</u></a>
+                </p>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>
