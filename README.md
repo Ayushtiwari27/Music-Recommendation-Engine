@@ -31,6 +31,9 @@ This project is made under **Microsoft Intern Engage 2022** program.
 The problem statement given was:
 >Demonstrate through your app the different kinds of algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.
 
+## About the Project
+The recommendation Engine made is a Content-based filtering system which predits the next user's choice on the basis of Genre and the year of release of the song being played. The engine uses [K-means Clustering](https://blogs.oracle.com/ai-and-datascience/post/introduction-to-k-means-clustering#:~:text=K%2Dmeans%20clustering%20is%20a,represented%20by%20the%20variable%20K.) to predict the songs.
+
 ## Built With
 </br>
 <p float = "left">
@@ -56,6 +59,9 @@ The problem statement given was:
 ```sh
 pip3 install -r requirements.txt
 ```
+## Dataset
+Dataset used in this recommendation system is provided in the repo. The dataset was downloaded from internet and tweaked a bit for the efficiency of the program.
+
 ## Navigating Through the Website
 1. **Login**: The first page that user interacts with is the Login page. The user needs to Login first to start using the application. If the User  is not registered then he/she can go to the Registeration page to register first. If the user enters wrong credentials than also the user will be transfered to Registration page.
 <img alt="Login Page" src="">
@@ -69,8 +75,9 @@ pip3 install -r requirements.txt
 4. **Index**: After the user chooses a song on the Welcome page he will be directed to the Index page where the user gets recommendations on the basis of the songs he/she clicks on. The user can play a song available in meantime he surfs the website.
 <img alt="Index Page" src="">
 
-5.**Logout**: the user is also provided an option to Logout when and where the user wishes to. After logging out the user will be directed to the login page.
+5. **Logout**: the user is also provided an option to Logout when and where the user wishes to. After logging out the user will be directed to the login page.
 <img alt="Logout Page" src="">
+
 
 
 
