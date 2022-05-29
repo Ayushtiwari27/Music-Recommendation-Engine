@@ -9,9 +9,7 @@
     Content Based Music Recommendation Service 
     <br />
     <br />
-    <a href="https://rezonance.vercel.app">View Demo</a>
-    .
-    <a href="https://github.com/radiaoctive11/rezonance/issues">Visit the website »</a>    
+    <a href="https://drive.google.com/file/d/1uI3661JIP7_ZEAg19SjTRoKIzl6BmEzV/view?usp=sharing">View Demo</a> 
   </p>
 </p>
 
