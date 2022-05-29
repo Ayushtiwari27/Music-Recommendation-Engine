@@ -1,0 +1,11 @@
+Django==4.0.4
+numpy==1.21.6
+pandas==1.4.2
+scikit_learn==1.1.1
+scipy==1.8.0
+spotipy==2.19.0
+streamlit==1.9.2
+python==3.10.4
+
+# Install this before executing the program using following command:
+#       pip install -r requirements.txt 
