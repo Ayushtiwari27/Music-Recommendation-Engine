@@ -6,10 +6,7 @@
   </a>
   <h1 align="center">SARGAM</h1>
   <p align="center">
-    Content Based Music Recommendation Service 
-    <br />
-    <br />
-    <a href="https://drive.google.com/file/d/1uI3661JIP7_ZEAg19SjTRoKIzl6BmEzV/view?usp=sharing">View Demo</a> 
+    Content Based Music Recommendation Service
   </p>
 </p>
 
