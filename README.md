@@ -65,6 +65,9 @@ python manage.py runserver
 ``` 
 - Go to the localhost server link provided to go to the website
 
+## Using Spotify API
+- Register for Spotify API on Spotify website and use your Client ID and Client Secret in the Views.py page in home folder.
+
 ## Dataset
 Dataset used in this recommendation system is provided in the repo. The dataset was downloaded from internet and tweaked a bit for the efficiency of the program.
 
