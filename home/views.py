@@ -111,8 +111,8 @@ def func(name,year):
     spotify_data = pd.read_csv('Dataset/Data.csv.zip')
     spotify_data.head(10)
 
-    os.environ['SPOTIPY_CLIENT_ID'] = 'eedf186f1fee4a72b0ae0330d2ff62f0'
-    os.environ['SPOTIPY_CLIENT_SECRET'] = 'ab042a36acd34ddba4cc78fc24a93254'
+    os.environ['SPOTIPY_CLIENT_ID'] = '' #write client ID from Spotify API
+    os.environ['SPOTIPY_CLIENT_SECRET'] = '' #write client Secret from Spotify API
 
     sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=os.environ['SPOTIPY_CLIENT_ID'],client_secret=os.environ['SPOTIPY_CLIENT_SECRET']))
 
